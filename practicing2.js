@@ -36,9 +36,7 @@ const readline = require('readline').createInterface({
                 if(password1!=="pig" && secret1==="make me rich"){
                         console.log("Your so close , youll be rich when pigs fly");
                 }
-                if(password1 !=="pig" && secret1 !=="make me rich"){
-                    console.log("Try again");
-                }
+            
 
 
             readline.close()
