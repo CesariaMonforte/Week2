@@ -37,44 +37,57 @@ use tha display function within the mathgame function to display
 //determine a proper parameter variable name
 function MathGame(num1, num2, operatorChosen, userGuess) {
 
+   
+
+
   function GuessComparison(answer,userGuess){
     if (answer == userGuess){
       console.log("correct")
     }
     else if (answer != userGuess){
       console.log(`wrong`);
+      if (userGuess > answer-5 && userGuess > answer+5){
+        console.log("very close!");
+      }
+      else if (userGuess > answer-2 && userGuess > answer+2){
+          console.log("almost correct");
+      }
     }
   }
 
+  
+  
+
   if (operatorChosen === "+"){
-    answer = Number(num1)+ Number(num2);
+    answer = num1+ num2;
     GuessComparison(answer,userGuess);
+   
   }
   else if (operatorChosen === "-"){
     answer= num1-num2;
     GuessComparison(answer,userGuess);
+    
   }
   else if (operatorChosen === "*"){
     answer = num1*num2;
     GuessComparison(answer,userGuess);
+    
   }
   else if (operatorChosen === "/"){
     answer= num1/num2;
     GuessComparison(answer,userGuess);
   }
 
+  
  
   
 }
 
-
+let attempts=0;
 //determine a proper question to ask and the proper variable name for the answer
 readline.question("the question for number 1", (firstNumber) => {
-  let num1 = Number(firstNumber);
   readline.question("the question for number 2", (secondNumber) => {
-    let num2 = Number(secondNumber);
     readline.question("the question for operator such as +-*/ ", (desiredOperator) => {
-      let operatorChosen= desiredOperator;
       //make an infinite recall for guessing question
       function StartGame() {
     
@@ -82,17 +95,26 @@ readline.question("the question for number 1", (firstNumber) => {
         readline.question("the question for guessing ", (guess) => {
           const userGuess = Number(guess);
           
-          MathGame(firstNumber,secondNumber,desiredOperator,guess);
+          
+  
+          attempts = attempts + 1;
+          MathGame(Number(firstNumber),Number(secondNumber),desiredOperator,Number(guess));
+         
           //call your function here
     
           if (guess === "quit") {
             readline.close();
           } else {
+            if (attempts>5){
+              console.log("Attempts done!");
+              readline.close();
+            }
             StartGame();
           }
         });
       }
     
+
       StartGame();
     })
   })
