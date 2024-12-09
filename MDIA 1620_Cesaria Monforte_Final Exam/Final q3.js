@@ -64,7 +64,7 @@ function AddUserColor(){
         
           userColors.push(_userColor);
           DisplayUserColors();
-         
+         break;
       }else {
         console.log("You must select a color between red, yellow, blue , orange and green: ")
         break;
@@ -78,6 +78,7 @@ function AddUserColor(){
 //rename this to DisplayUserColors
 function DisplayUserColors(){
   //add a color to userColors
+
   console.log("This are your colors: ")
   for(let i=0; i<userColors.length ;i++){
     console.log(` ${i+1} : ${userColors[i]}`)
@@ -96,13 +97,9 @@ function ToggleThemeColor(){
               if(toggleChoice === "on"){
                   theme.key=true;
               }else if(toggleChoice === "off"){
-                  if(theme.key === true){
-                    for(let i=0; i<userColors.length;i++){
-                      if (key === _toggleColor){
-                        userColors.splice(_toggleColor,1);
-                      }
-                    }
-                  }
+                 
+                      userColors.splice(_toggleColor,_toggleColor.length);
+                  
                   theme.key=false;
               }
         }
