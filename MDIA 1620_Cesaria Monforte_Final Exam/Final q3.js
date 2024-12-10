@@ -30,6 +30,8 @@ When a color is toggled from true to false, also remove the color from userColor
  * then loop through the theme color objects and check is the key is equal to the color 
  * if it is then toggle the color to the value the user chose
  * After that call the Display User color function
+ * Also check if the value the value before the toggle is done is "true" 
+ * if it si then remove the color from the User color Array
  * 
  * In the DisplayThemeColor function
  * Loop through the theme object 
